@@ -1,0 +1,63 @@
+matrizaleatoria cuadro1;
+matrizaleatoria cuadro2;
+void setup(){
+  background(150);
+  size (400,400);
+  cuadro1 = new matrizaleatoria(75,100,100,5,20,0,50,200);
+  cuadro2 = new matrizaleatoria(225,100,100,5,20,255,60,0);
+  }
+
+
+void draw(){
+  cuadro1.crecer();
+  cuadro1.display();
+  cuadro2.crecer();
+  cuadro2.display();
+  
+}
+
+class matrizaleatoria{
+  float x,y;
+  int tam;
+  int t;
+  int s1;
+  int c2;
+  int r;
+  int g;
+  int b;
+  
+  matrizaleatoria(float x_,float y_, int tam_, int t_, int s1_, int r_, int g_, int b_){
+    x = x_;
+    y = y_;
+    tam = tam_;
+    t = t_;
+    s1 = s1_;
+    r = r_;
+    g = g_;
+    b = b_;
+  }
+  
+  
+  
+  void crecer(){
+     if (mouseX > x & mouseX < x +tam){
+    if (mouseY > y & mouseY < y+tam){
+      c2 = s1;
+     }
+   }
+  else{
+    c2=t;
+  }
+}
+  
+
+  void display(){
+    noStroke();
+    for (int i = 0; i<tam; i+=c2) {
+      for (int j = 0; j<tam; j+=c2) {
+        fill(random(r),random(g),random(b));
+        rect(x+i, y+j, c2, c2);
+      }
+    }
+  }
+}
